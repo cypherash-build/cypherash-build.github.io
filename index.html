@@ -9,705 +9,117 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Press+Start+2P&family=Roboto:wght@400;500;700&family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            margin: 0;
-            background-color: #0f172a;
-            color: #e2e8f0;
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-        .pixelated {
-            font-family: 'Press Start 2P', monospace;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 30px; /* Increased padding for better spacing */
-        }
-        .heading-pixelated {
-            font-family: 'Press Start 2P', monospace;
-            font-size: 2.8rem; /* Slightly larger heading */
-            color: #cbd5e0;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
-            margin-bottom: 1.5rem; /* Added margin below heading */
-        }
-        .text-regular {
-            font-family: 'Raleway', sans-serif;
-            font-size: 1.1rem; /* Improved regular text size */
-            color: #d1d5db;
-            line-height: 1.8; /* Improved line height */
-        }
-        .button-pixelated {
-            font-family: 'Press Start 2P', monospace;
-            background-image: linear-gradient(to right, #3b82f6, #8b5cf6);
-            color: #fff;
-            padding: 16px 32px; /* Slightly larger buttons */
-            border-radius: 8px;
-            font-size: 1rem; /* Adjusted button font size */
-            transition: all 0.2s ease-in-out;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-            cursor: pointer;
-            border: none;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
-        }
-        .button-pixelated:hover {
-            background-image: linear-gradient(to right, #2563eb, #6d28d9);
-            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
-            transform: translateY(-2px);
-        }
-        .outline-button-pixelated {
-            font-family: 'Press Start 2P', monospace;
-            border: 2px solid #60a5fa;
-            color: #60a5fa;
-            padding: 14px 30px; /* Adjusted outline button padding */
-            border-radius: 8px;
-            font-size: 1rem; /* Adjusted outline button font size */
-            transition: all 0.2s ease-in-out;
-            background-color: transparent;
-            cursor: pointer;
-        }
-        .outline-button-pixelated:hover {
-            background-color: #60a5fa;
-            color: #fff;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-        }
-        #hamburger-btn {
-            display: none;
-            cursor: pointer;
-        }
-        @media (max-width: 768px) {
-            #hamburger-btn {
-                display: block;
-            }
-            .hidden-md {
-                display: none;
-            }
-            #mobile-menu {
-                display: none;
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background-color: rgba(0, 0, 0, 0.95);
-                z-index: 50;
-                overflow-y: auto;
-            }
-            #mobile-menu.active {
-                display: block;
-            }
-            #mobile-menu-content {
-                padding: 24px;
-            }
-            #close-menu-btn {
-                position: absolute;
-                top: 16px;
-                right: 16px;
-                color: #cbd5e0;
-                cursor: pointer;
-                font-size: 1.5rem;
-            }
-            .mobile-nav-links {
-                list-style: none;
-                padding: 0;
-                margin-top: 40px;
-            }
-            .mobile-nav-links li {
-                margin-bottom: 16px;
-            }
-            .mobile-nav-links a {
-                display: block;
-                font-size: 1.1rem;
-                color: #f0f4f8;
-                text-decoration: none;
-                padding: 12px 16px;
-                border-radius: 6px;
-                transition: background-color 0.2s ease-in-out;
-                font-family: 'Press Start 2P', monospace;
-            }
-            .mobile-nav-links a:hover {
-                background-color: #3b82f6;
-            }
-        }
-        #mouse-circle {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 40px; /* Larger size */
-            height: 40px; /* Larger size */
-            border-radius: 50%;
-            background-color: rgba(99, 102, 241, 0.2); /* Slightly more transparent */
-            pointer-events: none;
-            z-index: 40;
-            transform: translate(-50%, -50%);
-            transition: transform 0.1s ease-in-out, width 0.2s ease-in-out, height 0.2s ease-in-out;
-            backdrop-filter: blur(10px); /* Subtle blur effect */
-        }
-        a {
-            color: #60a5fa;
-            text-decoration: none;
-            transition: color 0.2s ease-in-out;
-        }
-        a:hover {
-            color: #3b82f6;
-        }
-        .card {
-            background-color: rgba(55, 65, 81, 0.6);
-            border-radius: 12px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-            overflow: hidden;
-            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-        }
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
-        }
-        .team-card {
-            padding: 30px; /* Increased padding for team cards */
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            transition: transform 0.3s ease-in-out; /* Added hover animation */
-        }
-        .team-card:hover {
-            transform: translateY(-8px);
-        }
-        .team-card h3 {
-            font-size: 1.6rem; /* Slightly larger team name */
-            margin-bottom: 0.75rem;
-            color: #818cf8;
-            font-family: 'Press Start 2P', monospace;
-        }
-        .team-card p {
-            font-size: 1rem; /* Adjusted team description size */
-            color: #d1d5db;
-        }
-        .opportunity-card {
-            padding: 30px; /* Increased padding for opportunity cards */
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            transition: transform 0.3s ease-in-out; /* Added hover animation */
-        }
-        .opportunity-card:hover {
-            transform: translateY(-8px);
-        }
-        .opportunity-card h4 {
-            font-size: 1.3rem; /* Slightly larger opportunity title */
-            margin-bottom: 1rem;
-            color: #fbd38d;
-            font-family: 'Press Start 2P', monospace;
-        }
-        .opportunity-card p {
-            font-size: 1.05rem; /* Adjusted opportunity description size */
-            color: #d1d5db;
-            margin-bottom: 2rem;
-        }
-        .apply-button {
-            @apply .button-pixelated;
-            font-size: 1rem;
-            padding: 14px 28px;
-            align-self: flex-start;
-        }
-        .opportunities-cta {
-            margin-top: 4rem; /* Increased margin */
-            text-align: center;
-        }
-        .opportunities-cta .outline-button-pixelated {
-            font-size: 1.1rem; /* Slightly larger CTA button */
-            padding: 16px 32px;
-        }
-
-        /* Hero Section with Video */
-        #hero {
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 700px; /* Increased hero height */
-            text-align: center;
-            color: white;
-        }
-
-        #hero-video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: -1;
-        }
-
-        #hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.6); /* Slightly darker overlay */
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-
-        .hero-title {
-            font-size: 4rem; /* Larger hero title */
-            font-weight: bold;
-            margin-bottom: 2.5rem;
-            font-family: 'Press Start 2P', monospace;
-            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
-            animation: fadeInUp 1s ease-out 0.5s forwards; /* Added animation */
-            opacity: 0;
-            transform: translateY(30px);
-        }
-
-        .hero-subtitle {
-            font-size: 1.3rem; /* Improved hero subtitle size */
-            color: #d1d5db;
-            margin-bottom: 3.5rem;
-            line-height: 1.9;
-            animation: fadeInUp 1s ease-out 0.7s forwards; /* Added animation */
-            opacity: 0;
-            transform: translateY(30px);
-        }
-
-        .hero-button {
-            @apply .button-pixelated;
-            font-size: 1.1rem;
-            padding: 1.2rem 3rem;
-            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite, fadeInUp 1s ease-out 0.9s forwards; /* Added fadeInUp animation */
-            opacity: 0;
-            transform: translateY(30px);
-        }
-
-        /* About Section */
-        #about {
-            padding: 10rem 0; /* Increased padding */
-        }
-        .about-title {
-            @apply .heading-pixelated;
-            text-align: center;
-            margin-bottom: 4rem; /* Increased margin */
-            animation: fadeIn 1s ease-out 0.2s forwards; /* Added animation */
-            opacity: 0;
-        }
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px; /* Increased gap */
-            align-items: center;
-        }
-        .about-text {
-            @apply .text-regular;
-            font-size: 1.15rem; /* Improved about text size */
-            line-height: 2; /* Improved line height */
-            animation: slideInLeft 0.8s ease-out 0.4s forwards; /* Added animation */
-            transform: translateX(-50px);
-            opacity: 0;
-        }
-        #about-image-container {
-            position: relative;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-            animation: slideInRight 0.8s ease-out 0.6s forwards; /* Added animation */
-            transform: translateX(50px);
-            opacity: 0;
-        }
-        #about-image-container:hover {
-            transform: scale(1.05);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
-        }
-        #about-image {
-            display: block;
-            width: 100%;
-            height: auto;
-        }
-        #about-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(63, 136, 197, 0.4); /* Slightly more opaque overlay */
-            opacity: 0;
-            transition: opacity 0.2s ease-in-out;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        #about-image-container:hover #about-overlay {
-            opacity: 1;
-        }
-        #about-overlay-text {
-            color: #fff;
-            font-size: 1.2rem;
-            font-weight: 500;
-            text-align: center;
-            padding: 20px;
-            border: 2px solid #fff;
-            border-radius: 8px;
-            background-color: rgba(0, 0, 0, 0.6); /* Slightly darker overlay text background */
-            backdrop-filter: blur(6px);
-            font-family: 'Press Start 2P', monospace;
-        }
-
-        /* Teams Section */
-        #teams {
-            padding: 10rem 0;
-            text-align: center;
-            background-color: #1e293b;
-        }
-        .teams-title {
-            @apply .heading-pixelated;
-            margin-bottom: 4rem;
-            animation: fadeIn 1s ease-out 0.2s forwards; /* Added animation */
-            opacity: 0;
-        }
-        .teams-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Slightly wider cards */
-            gap: 40px; /* Increased gap */
-            margin-top: 3rem;
-        }
-        .team-card {
-            @apply .card .team-card;
-            animation: fadeInUp 0.8s ease-out 0.4s forwards; /* Added animation */
-            opacity: 0;
-            transform: translateY(20px);
-        }
-
-        /* Opportunities Section */
-        #opportunities {padding: 10rem 0;
-            text-align: center;
-            background-color: #2d3748;
-        }
-        .opportunities-title {
-            @apply .heading-pixelated;
-            margin-bottom: 4rem;
-            animation: fadeIn 1s ease-out 0.2s forwards; /* Added animation */
-            opacity: 0;
-        }
-        .opportunities-description {
-            @apply .text-regular;
-            font-size: 1.15rem;
-            margin-bottom: 3rem;
-            animation: fadeIn 1s ease-out 0.4s forwards; /* Added animation */
-            opacity: 0;
-        }
-        .opportunities-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* Slightly wider cards */
-            gap: 40px; /* Increased gap */
-            margin-top: 3rem;
-        }
-        .opportunity-card {
-            @apply .card .opportunity-card;
-            animation: fadeInUp 0.8s ease-out 0.6s forwards; /* Added animation */
-            opacity: 0;
-            transform: translateY(20px);
-        }
-        .opportunity-card h4 {
-            font-size: 1.4rem; /* Slightly larger opportunity title */
-            margin-bottom: 1.2rem;
-            color: #fbd38d;
-            font-family: 'Press Start 2P', monospace;
-        }
-        .opportunity-card p {
-            font-size: 1.1rem; /* Adjusted opportunity description size */
-            color: #d1d5db;
-            margin-bottom: 2.5rem;
-        }
-        .apply-button {
-            @apply .button-pixelated;
-            font-size: 1.1rem;
-            padding: 16px 32px;
-            align-self: flex-start;
-        }
-        .opportunities-cta {
-            margin-top: 5rem; /* Increased margin */
-            text-align: center;
-        }
-        .opportunities-cta .outline-button-pixelated {
-            font-size: 1.2rem; /* Slightly larger CTA button */
-            padding: 18px 36px;
-        }
-
-        /* Contact Section */
-        #contact {
-            padding: 10rem 0;
-            text-align: center;
-        }
-        .contact-title {
-            @apply .heading-pixelated;
-            margin-bottom: 4rem;
-            animation: fadeIn 1s ease-out 0.2s forwards; /* Added animation */
-            opacity: 0;
-        }
-        .contact-form {
-            max-width: 700px; /* Wider form */
-            margin: 0 auto;
-            @apply .form-container;
-            animation: fadeInUp 0.8s ease-out 0.4s forwards; /* Added animation */
-            opacity: 0;
-            transform: translateY(20px);
-        }
-        .form-group {
-            margin-bottom: 2rem; /* Increased margin */
-            text-align: left;
-        }
-        .form-label {
-            display: block;
-            font-size: 1.1rem; /* Slightly larger label */
-            font-weight: 500;
-            color: #cbd5e0;
-            margin-bottom: 0.75rem;
-        }
-        .submit-button {
-            @apply .button-pixelated;
-            width: 100%;
-            font-size: 1.1rem;
-            padding: 16px 32px;
-        }
-
-        /* Footer */
-        .footer {
-            padding: 3rem 0; /* Increased padding */
-            text-align: center;
-            background-color: #1a202c;
-            color: #9ca3af;
-            font-size: 1rem; /* Adjusted footer font size */
-            margin-top: 8rem; /* Increased margin */
-            animation: fadeIn 1s ease-out 0.2s forwards; /* Added animation */
-            opacity: 0;
-        }
-        .footer a {
-            color: #60a5fa;
-        }
-
-        /* Animations Keyframes */
-        @keyframes fadeIn {
-            to {
-                opacity: 1;
-            }
-        }
-
-        @keyframes fadeInUp {
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        @keyframes slideInLeft {
-            to {
-                transform: translateX(0);
-                opacity: 1;
-            }
-        }
-
-        @keyframes slideInRight {
-            to {
-                transform: translateX(0);
-                opacity: 1;
-            }
-        }
-
-        @keyframes pulse {
-            0%, 100% {
-                opacity: 1;
-            }
-            50% {
-                opacity: 0.8;
-            }
-        }
+        .pixelated { font-family: 'Press Start 2P', monospace; }
+        .text-regular { font-family: 'Raleway', sans-serif; }
+        @keyframes fadeIn { to { opacity: 1; } }
+        @keyframes fadeInUp { to { transform: translateY(0); opacity: 1; } }
+        @keyframes slideInLeft { to { transform: translateX(0); opacity: 1; } }
+        @keyframes slideInRight { to { transform: translateX(0); opacity: 1; } }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.8; } }
+        #mouse-circle { position: fixed; top: 0; left: 0; width: 40px; height: 40px; border-radius: 50%; background-color: rgba(99, 102, 241, 0.2); pointer-events: none; z-index: 40; transform: translate(-50%, -50%); transition: transform 0.1s ease-in-out; backdrop-filter: blur(10px); }
     </style>
 </head>
-<body class="bg-gray-900 text-white">
+<body class="bg-gray-900 text-white font-inter">
     <header class="py-8 px-4 sm:px-6 lg:px-8">
-        <div class="container flex justify-between items-center">
-            <a href="#" class="text-3xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 pixelated">
-                Cypherash Labs
-            </a>
-            <nav class="hidden-md">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="#" class="text-3xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 pixelated">Cypherash Labs</a>
+            <nav class="hidden md:block">
                 <ul class="flex space-x-8">
                     <li><a href="#about" class="hover:text-blue-300 transition duration-300 pixelated">About Us</a></li>
                     <li><a href="#teams" class="hover:text-blue-300 transition duration-300 pixelated">Teams</a></li>
                     <li><a href="#opportunities" class="hover:text-blue-300 transition duration-300 pixelated">Opportunities</a></li>
-                    <li><a href="#contact" class="button-pixelated">Contact</a></li>
+                    <li><a href="#contact" class="bg-gradient-to-r from-blue-500 to-purple-500 text-white py-2 px-4 rounded-md hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-600 shadow-md transition duration-300 pixelated">Contact</a></li>
                 </ul>
             </nav>
-            <button id="hamburger-btn" class="text-gray-300 focus:outline-none" aria-label="Toggle Navigation">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-                </svg>
+            <button id="hamburger-btn" class="md:hidden text-gray-300 focus:outline-none" aria-label="Toggle Navigation">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
             </button>
         </div>
     </header>
 
-    <div id="mobile-menu" class="hidden">
-        <div id="mobile-menu-content">
-            <div class="flex justify-end mb-6">
-                <button id="close-menu-btn" class="text-gray-300 focus:outline-none" aria-label="Close Menu">
-                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                </button>
-            </div>
-            <nav class="block">
-                <ul class="mobile-nav-links">
-                    <li><a href="#about" class="">About Us</a></li>
-                    <li><a href="#teams" class="">Teams</a></li>
-                    <li><a href="#opportunities" class="">Opportunities</a></li>
-                    <li><a href="#contact" class="">Contact</a></li>
-                </ul>
-            </nav>
+    <div id="mobile-menu" class="hidden fixed top-0 left-0 w-full h-full bg-gray-900 z-50 overflow-y-auto">
+        <div class="p-6">
+            <div class="flex justify-end mb-4"><button id="close-menu-btn" class="text-gray-300 focus:outline-none"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg></button></div>
+            <nav class="block"><ul class="space-y-4"><li class="pixelated"><a href="#about" class="block py-2 px-4 hover:bg-gray-800 rounded">About Us</a></li><li class="pixelated"><a href="#teams" class="block py-2 px-4 hover:bg-gray-800 rounded">Teams</a></li><li class="pixelated"><a href="#opportunities" class="block py-2 px-4 hover:bg-gray-800 rounded">Opportunities</a></li><li class="pixelated"><a href="#contact" class="block py-2 px-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-md hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-600 shadow-md">Contact</a></li></ul></nav>
         </div>
     </div>
 
     <main class="flex-grow">
-        <section id="hero">
-            <video id="hero-video" src="your-hero-video.mp4" autoplay loop muted></video>
-            <div id="hero-overlay">
-                <h1 class="hero-title pixelated">
-                    Welcome to Cypherash Labs
-                </h1>
-                <p class="hero-subtitle text-regular">
-                    Where Innovation Meets Impact
-                </p>
-                <a href="#opportunities" class="hero-button pulse">
-                    Explore Opportunities
-                </a>
+        <section id="hero" class="relative overflow-hidden flex justify-center items-center min-h-screen text-center text-white">
+            <video id="hero-video" src="your-hero-video.mp4" autoplay loop muted class="absolute top-0 left-0 w-full h-full object-cover z-[-1]"></video>
+            <div class="absolute top-0 left-0 w-full h-full bg-black/50 flex flex-col justify-center items-center p-6">
+                <h1 class="text-4xl font-bold mb-4 pixelated animate-fadeInUp">Welcome to Cypherash Labs</h1>
+                <p class="text-lg text-gray-300 mb-8 text-regular animate-fadeInUp delay-200">Where Innovation Meets Impact</p>
+                <a href="#opportunities" class="bg-blue-500 hover:bg-blue-600 text-white py-3 px-6 rounded-md text-lg animate-pulse animate-fadeInUp delay-400 pixelated">Explore Opportunities</a>
             </div>
         </section>
 
-        <section id="about">
-            <div class="container">
-                <h2 class="about-title pixelated">About Us</h2>
-                <div class="about-content">
-                    <div class="about-text">
-                        <p class="text-regular">
-                            Cypherash Labs is a pioneering technology company dedicated to developing cutting-edge solutions that address real-world challenges. We bring together a diverse team of talented individuals with expertise in AI, electronics, and brand marketing to create innovative products and services. Our mission is to push the boundaries of technology and make a positive impact on society.
-                        </p>
-                    </div>
-                    <div id="about-image-container">
-                        <img id="about-image" src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=3270&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="About Us">
-                        <div id="about-overlay">
-                            <p id="about-overlay-text">
-                                Click to learn more about our innovative solutions and passionate team.
-                            </p>
+        <section id="about" class="py-16">
+            <div class="container mx-auto text-center">
+                <h2 class="text-3xl pixelated mb-8 animate-fadeIn">About Us</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+                    <div class="text-lg text-gray-300 text-regular animate-slideInLeft">Cypherash Labs is a pioneering technology company dedicated to developing cutting-edge solutions that address real-world challenges. We bring together a diverse team of talented individuals with expertise in AI, electronics, and brand marketing to create innovative products and services. Our mission is to push the boundaries of technology and make a positive impact on society.</div>
+                    <div class="relative rounded-md overflow-hidden shadow-lg animate-slideInRight">
+                        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=3270&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="About Us" class="w-full h-auto">
+                        <div class="absolute top-0 left-0 w-full h-full bg-black/20 hover:bg-blue-500/40 transition-colors duration-300 flex items-center justify-center opacity-0 hover:opacity-100">
+                            <p class="text-white text-xl pixelated">Learn More</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="teams">
-            <div class="container">
-                <h2 class="teams-title pixelated">Our Teams</h2>
-                <div class="teams-grid">
-                    <div class="team-card">
-                        <h3>AI (Software)</h3>
-                        <p class="text-gray-400">AI Software Engineer</p>
-                        <p class="text-regular">
-                            Our AI software team is dedicated to developing intelligent algorithms and applications that power our innovative solutions. We work on cutting-edge technologies like machine learning, deep learning, and natural language processing to create software that learns, adapts, and solves complex problems.
-                        </p>
+        <section id="teams" class="py-16 bg-gray-800">
+            <div class="container mx-auto text-center">
+                <h2 class="text-3xl pixelated mb-8 animate-fadeIn">Our Teams</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-gray-700 rounded-md shadow-md p-6 animate-fadeInUp">
+                        <h3 class="text-xl pixelated text-blue-400 mb-2">AI (Software)</h3>
+                        <p class="text-gray-300 text-regular">Develop intelligent algorithms and applications.</p>
                     </div>
-                    <div class="team-card">
-                        <h3>AI (Hardware)</h3>
-                        <p class="text-gray-400">AI Hardware Specialist</p>
-                        <p class="text-regular">
-                            The AI hardware team focuses on designing and optimizing the physical infrastructure that supports our AI algorithms. We work on developing specialized hardware, including GPUs, FPGAs, and neuromorphic chips, to accelerate AI processing and improve energy efficiency.
-                        </p>
+                    <div class="bg-gray-700 rounded-md shadow-md p-6 animate-fadeInUp delay-200">
+                        <h3 class="text-xl pixelated text-blue-400 mb-2">AI (Hardware)</h3>
+                        <p class="text-gray-300 text-regular">Design and optimize hardware for AI acceleration.</p>
                     </div>
-                    <div class="team-card">
-                         <h3>Brand Marketing</h3>
-                        <p class="text-gray-400">Brand Marketing Manager</p>
-                        <p class="text-regular">
-                            Our brand marketing team is responsible for shaping the public perception of Cypherash Labs and our products. We develop and execute creative marketing strategies to communicate our value proposition, build brand awareness, and engage with our target audience. We strive to create compelling campaigns that reflect our company's values and vision.
-                        </p>
+                    <div class="bg-gray-700 rounded-md shadow-md p-6 animate-fadeInUp delay-400">
+                        <h3 class="text-xl pixelated text-blue-400 mb-2">Brand Marketing</h3>
+                        <p class="text-gray-300 text-regular">Shape public perception and marketing strategies.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="opportunities">
-            <div class="container">
-                <h2 class="opportunities-title pixelated">Opportunities</h2>
-                <p class="opportunities-description text-regular">
-                    We are always looking for talented and passionate individuals to join our team. If you are driven by innovation and want to make a difference, we encourage you to explore the opportunities below.
-                </p>
-                <div class="opportunities-grid">
-                    <div class="opportunity-card">
-                        <h4>AI (Software) Engineer</h4>
-                        <p class="text-regular">Develop cutting-edge AI algorithms and applications.</p>
-                        <a href="https://forms.office.com/r/YOUR_MICROSOFT_FORM_LINK" class="apply-button pulse">Apply Now</a>
-                    </div>
-                    <div class="opportunity-card">
-                        <h4>AI (Hardware) Specialist</h4>
-                        <p class="text-regular">Design and optimize hardware for AI acceleration.</p>
-                        <a href="https://forms.office.com/r/YOUR_MICROSOFT_FORM_LINK" class="apply-button pulse">Apply Now</a>
-                    </div>
-                    <div class="opportunity-card">
-                        <h4>Electronics Engineer</h4>
-                        <p class="text-regular">Design and develop electronic systems and devices.</p>
-                        <a href="https://forms.office.com/r/YOUR_MICROSOFT_FORM_LINK" class="apply-button pulse">Apply Now</a>
-                    </div>
-                    <div class="opportunity-card">
-                        <h4>Brand Marketing Manager</h4>
-                        <p class="text-regular">Develop and execute brand marketing strategies.</p>
-                        <a href="https://forms.office.com/r/YOUR_MICROSOFT_FORM_LINK" class="apply-button pulse">Apply Now</a>
-                    </div>
+        <section id="opportunities" class="py-16">
+            <div class="container mx-auto text-center">
+                <h2 class="text-3xl pixelated mb-8 animate-fadeIn">Opportunities</h2>
+                <p class="text-lg text-gray-300 mb-8 text-regular animate-fadeIn">We are always looking for talented and passionate individuals to join our team. Explore the opportunities below.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="bg-gray-700 rounded-md shadow-md p-6 animate-fadeInUp"><h4 class="text-lg pixelated text-yellow-400 mb-2">AI (Software) Engineer</h4><p class="text-gray-300 text-regular mb-4">Develop cutting-edge AI algorithms.</p><a href="#" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md pixelated inline-block">Apply Now</a></div>
+                    <div class="bg-gray-700 rounded-md shadow-md p-6 animate-fadeInUp delay-200"><h4 class="text-lg pixelated text-yellow-400 mb-2">AI (Hardware) Specialist</h4><p class="text-gray-300 text-regular mb-4">Design and optimize AI hardware.</p><a href="#" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md pixelated inline-block">Apply Now</a></div>
+                    <div class="bg-gray-700 rounded-md shadow-md p-6 animate-fadeInUp delay-400"><h4 class="text-lg pixelated text-yellow-400 mb-2">Electronics Engineer</h4><p class="text-gray-300 text-regular mb-4">Design and develop electronic systems.</p><a href="#" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md pixelated inline-block">Apply Now</a></div>
+                    <div class="bg-gray-700 rounded-md shadow-md p-6 animate-fadeInUp delay-600"><h4 class="text-lg pixelated text-yellow-400 mb-2">Brand Marketing Manager</h4><p class="text-gray-300 text-regular mb-4">Develop brand strategies.</p><a href="#" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md pixelated inline-block">Apply Now</a></div>
                 </div>
-                 <div class="opportunities-cta">
-                    <a href="#" class="outline-button-pixelated">
-                        See All Openings
-                    </a>
-                </div>
+                <div class="mt-8"><a href="#" class="bg-transparent border border-blue-500 hover:bg-blue-500 text-blue-500 hover:text-white py-3 px-6 rounded-md pixelated transition duration-300">See All Openings</a></div>
             </div>
         </section>
 
-        <section id="contact">
-            <div class="container">
-                <h2 class="contact-title pixelated">Contact Us</h2>
-                <div class="contact-form">
+        <section id="contact" class="py-16 bg-gray-800">
+            <div class="container mx-auto text-center">
+                <h2 class="text-3xl pixelated mb-8 animate-fadeIn">Contact Us</h2>
+                <div class="max-w-md mx-auto animate-fadeInUp">
                     <form id="contact-form" class="space-y-6">
-                        <div class="form-group">
-                            <label for="name" class="form-label text-regular">Name</label>
-                            <input type="text" id="name" name="name" class="placeholder-gray-400" placeholder="Your Name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email" class="form-label text-regular">Email</label>
-                            <input type="email" id="email" name="email" class="placeholder-gray-400" placeholder="Your Email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="message" class="form-label text-regular">Message</label>
-                            <textarea id="message" name="message" rows="4" class="placeholder-gray-400" placeholder="Your Message" required></textarea>
-                        </div>
-                        <button type="submit" class="submit-button">
-                            Send Message
-                        </button>
+                        <div><label for="name" class="block text-gray-300 text-sm font-bold mb-2 text-regular">Name</label><input type="text" id="name" name="name" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-gray-700 text-white placeholder-gray-400" placeholder="Your Name" required></div>
+                        <div><label for="email" class="block text-gray-300 text-sm font-bold mb-2 text-regular">Email</label><input type="email" id="email" name="email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-gray-700 text-white placeholder-gray-400" placeholder="Your Email" required></div>
+                        <div><label for="message" class="block text-gray-300 text-sm font-bold mb-2 text-regular">Message</label><textarea id="message" name="message" rows="4" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-gray-700 text-white placeholder-gray-400" placeholder="Your Message" required></textarea></div>
+                        <button type="submit" class="bg-gradient-to-r from-blue-500 to-purple-500 hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-600 text-white font-bold py-3 px-6 rounded-md shadow-md transition duration-300 pixelated w-full">Send Message</button>
                     </form>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="footer">
-        <div class="container text-center text-gray-400 text-regular">
-            <p>&copy; 2025 Cypherash Labs. All rights reserved.</p>
-        </div>
+    <footer class="py-6 text-center bg-gray-900 text-gray-400 text-sm text-regular animate-fadeIn">
+        <div class="container mx-auto">&copy; 2025 Cypherash Labs. All rights reserved. <a href="#" class="text-blue-400 hover:text-blue-300">Privacy Policy</a></div>
     </footer>
 
     <div id="mouse-circle"></div>
@@ -716,43 +128,30 @@
         const hamburgerBtn = document.getElementById("hamburger-btn");
         const mobileMenu = document.getElementById("mobile-menu");
         const closeMenuBtn = document.getElementById("close-menu-btn");
-        const mobileMenuLinks = mobileMenu.querySelectorAll("a");
         const navLinks = document.querySelectorAll('a[href^="#"]');
         const sections = document.querySelectorAll('section');
         const mouseCircle = document.getElementById('mouse-circle');
-        const aboutImageContainer = document.getElementById('about-image-container');
-        const aboutOverlay = document.getElementById('about-overlay');
 
-        function toggleMobileMenu() {
-            mobileMenu.classList.toggle("hidden");
-        }
-
-        hamburgerBtn.addEventListener("click", toggleMobileMenu);
-        closeMenuBtn.addEventListener("click", toggleMobileMenu);
-        mobileMenuLinks.forEach(link => {
-            link.addEventListener("click", toggleMobileMenu);
-        });
-
-        document.addEventListener('click', (event) => {
+        hamburgerBtn.addEventListener("click", () => mobileMenu.classList.toggle("hidden"));
+        closeMenuBtn.addEventListener("click", () => mobileMenu.classList.add("hidden"));document.addEventListener('click', (event) => {
             if (!mobileMenu.classList.contains('hidden') && !mobileMenu.contains(event.target) && event.target !== hamburgerBtn) {
-                toggleMobileMenu();
+                mobileMenu.classList.add('hidden');
             }
         });
 
         function updateActiveNavLink() {
-            let currentSectionId = '';
+            const scrollY = window.scrollY;
             sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (window.scrollY >= sectionTop - 150 && window.scrollY < sectionTop + sectionHeight - 150) {
-                    currentSectionId = section.getAttribute('id');
-                }
-            });
-
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href').slice(1) === currentSectionId) {
-                    link.classList.add('active');
+                const sectionTop = section.offsetTop - 100;
+                const sectionHeight = section.offsetHeight;
+                const sectionId = section.getAttribute('id');
+                const activeLink = document.querySelector(`nav a[href="#${sectionId}"]`);
+                if (activeLink) {
+                    if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+                        activeLink.classList.add('active');
+                    } else {
+                        activeLink.classList.remove('active');
+                    }
                 }
             });
         }
@@ -764,61 +163,44 @@
                 event.preventDefault();
                 const targetId = link.getAttribute('href').slice(1);
                 const targetSection = document.getElementById(targetId);
-
                 if (targetSection) {
-                    window.scrollTo({
-                        top:targetSection.offsetTop - 100,
-                        behavior: 'smooth'
-                    });
+                    window.scrollTo({ top: targetSection.offsetTop - 80, behavior: 'smooth' });
+                    if (mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
                 }
             });
         });
 
         document.getElementById('contact-form').addEventListener('submit', function(event) {
             event.preventDefault();
-
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
-
+            const name = this.name.value;
+            const email = this.email.value;
+            const message = this.message.value;
             if (!name || !email || !message) {
                 alert('Please fill in all fields.');
                 return;
             }
-
             console.log('Form Data:', { name, email, message });
-            alert('Your message has been sent. We will get back to you soon!');
-
-            document.getElementById('name').value = '';
-            document.getElementById('email').value = '';
-            document.getElementById('message').value = '';
+            alert('Your message has been sent!');
+            this.reset();
         });
 
         document.addEventListener('mousemove', (event) => {
-            const x = event.clientX;
-            const y = event.clientY;
-            mouseCircle.style.transform = `translate(${x}px, ${y}px)`;
+            mouseCircle.style.transform = `translate(${event.clientX}px, ${event.clientY}px)`;
         });
 
-        aboutImageContainer.addEventListener('click', () => {
-            alert('You clicked on the image! This could open a modal or gallery with more information.');
-        });
-
-        // Observe elements for fade-in and slide-in animations on scroll
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('fade-in', 'slide-in-left', 'slide-in-right', 'fadeInUp');
-                    observer.unobserve(entry.target); // Stop observing once animated
+                    entry.target.classList.add('animate-fadeIn', 'animate-fadeInUp', 'animate-slideInLeft', 'animate-slideInRight');
+                    observer.unobserve(entry.target);
                 }
             });
-        }, {
-            threshold: 0.2 // Trigger animation when 20% of the element is visible
-        });
+        }, { threshold: 0.1 });
 
-        // Observe elements with initial animation classes
-        document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .fadeInUp').forEach((element) => {
-            observer.observe(element);
+        document.querySelectorAll('.animate-fadeIn, .animate-fadeInUp, .animate-slideInLeft, .animate-slideInRight').forEach((el) => {
+            observer.observe(el);
         });
     </script>
 </body>
