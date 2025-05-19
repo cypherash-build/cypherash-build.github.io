@@ -16,7 +16,42 @@
         @keyframes slideInLeft { to { transform: translateX(0); opacity: 1; } }
         @keyframes slideInRight { to { transform: translateX(0); opacity: 1; } }
         @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.8; } }
-        #mouse-circle { position: fixed; top: 0; left: 0; width: 40px; height: 40px; border-radius: 50%; background-color: rgba(99, 102, 241, 0.2); pointer-events: none; z-index: 40; transform: translate(-50%, -50%); transition: transform 0.1s ease-in-out; backdrop-filter: blur(10px); }
+        #mouse-circle { position: fixed; top: 0; left: 0; width: 60px; height: 60px; border-radius: 50%; background-color: rgba(99, 102, 241, 0.2); pointer-events: none; z-index: 40; transform: translate(-50%, -50%); transition: transform 0.1s ease-in-out; backdrop-filter: blur(10px); }
+        body {
+            cursor: none; /* Hide the default cursor */
+        }
+
+        .shooting-star {
+            position: absolute;
+            background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.8));
+            width: 100px;
+            height: 2px;
+            transform-origin: 0 0;
+            z-index: 1;
+            animation: shooting-star 2s infinite;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+
+        @keyframes shooting-star {
+            0% {
+                transform: translateX(0) translateY(0) rotate(45deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.8;
+            }
+            30% {
+                transform: translateX(200px) translateY(200px) rotate(45deg);
+                opacity: 0.5;
+            }
+            100% {
+                transform: translateX(400px) translateY(400px) rotate(45deg);
+                opacity: 0;
+            }
+        }
+
     </style>
 </head>
 <body class="bg-gray-900 text-white font-inter">
@@ -55,15 +90,19 @@
         </section>
 
         <section id="about" class="py-16">
-            <div class="container mx-auto text-center">
-                <h2 class="text-3xl pixelated mb-8 animate-fadeIn">About Us</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-                    <div class="text-lg text-gray-300 text-regular animate-slideInLeft">Cypherash Labs is a pioneering technology company dedicated to developing cutting-edge solutions that address real-world challenges. We bring together a diverse team of talented individuals with expertise in AI, electronics, and brand marketing to create innovative products and services. Our mission is to push the boundaries of technology and make a positive impact on society.</div>
-                    <div class="relative rounded-md overflow-hidden shadow-lg animate-slideInRight">
-                        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=3270&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="About Us" class="w-full h-auto">
-                        <div class="absolute top-0 left-0 w-full h-full bg-black/20 hover:bg-blue-500/40 transition-colors duration-300 flex items-center justify-center opacity-0 hover:opacity-100">
-                            <p class="text-white text-xl pixelated">Learn More</p>
-                        </div>
+            <div class="container mx-auto">
+                <h2 class="text-3xl pixelated mb-12 text-center animate-fadeIn">About Us</h2>
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="animate-slideInLeft">
+                        <p class="text-lg text-gray-300 text-regular mb-6">
+                            Cypherash Labs is a pioneering technology company dedicated to developing cutting-edge solutions that address real-world challenges.
+                        </p>
+                        <p class="text-lg text-gray-300 text-regular">
+                            We bring together a diverse team of talented individuals with expertise in AI, electronics, and brand marketing to create innovative products and services. Our mission is to push the boundaries of technology and make a positive impact on society.
+                        </p>
+                    </div>
+                    <div class="rounded-lg shadow-xl overflow-hidden animate-slideInRight">
+                        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=3270&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="About Us" class="w-full h-auto object-cover">
                     </div>
                 </div>
             </div>
@@ -94,10 +133,26 @@
                 <h2 class="text-3xl pixelated mb-8 animate-fadeIn">Opportunities</h2>
                 <p class="text-lg text-gray-300 mb-8 text-regular animate-fadeIn">We are always looking for talented and passionate individuals to join our team. Explore the opportunities below.</p>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    <div class="bg-gray-700 rounded-md shadow-md p-6 animate-fadeInUp"><h4 class="text-lg pixelated text-yellow-400 mb-2">AI (Software) Engineer</h4><p class="text-gray-300 text-regular mb-4">Develop cutting-edge AI algorithms.</p><a href="#" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md pixelated inline-block">Apply Now</a></div>
-                    <div class="bg-gray-700 rounded-md shadow-md p-6 animate-fadeInUp delay-200"><h4 class="text-lg pixelated text-yellow-400 mb-2">AI (Hardware) Specialist</h4><p class="text-gray-300 text-regular mb-4">Design and optimize AI hardware.</p><a href="#" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md pixelated inline-block">Apply Now</a></div>
-                    <div class="bg-gray-700 rounded-md shadow-md p-6 animate-fadeInUp delay-400"><h4 class="text-lg pixelated text-yellow-400 mb-2">Electronics Engineer</h4><p class="text-gray-300 text-regular mb-4">Design and develop electronic systems.</p><a href="#" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md pixelated inline-block">Apply Now</a></div>
-                    <div class="bg-gray-700 rounded-md shadow-md p-6 animate-fadeInUp delay-600"><h4 class="text-lg pixelated text-yellow-400 mb-2">Brand Marketing Manager</h4><p class="text-gray-300 text-regular mb-4">Develop brand strategies.</p><a href="#" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md pixelated inline-block">Apply Now</a></div>
+                    <div class="bg-gray-700 rounded-md shadow-md p-6 animate-fadeInUp">
+                        <h4 class="text-lg pixelated text-yellow-400 mb-2">AI (Software) Engineer</h4>
+                        <p class="text-gray-300 text-regular mb-4">Develop cutting-edge AI algorithms.</p>
+                        <button onclick="openMicrosoftForm()" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md pixelated inline-block">Apply Now</button>
+                    </div>
+                    <div class="bg-gray-700 rounded-md shadow-md p-6 animate-fadeInUp delay-200">
+                        <h4 class="text-lg pixelated text-yellow-400 mb-2">AI (Hardware) Specialist</h4>
+                        <p class="text-gray-300 text-regular mb-4">Design and optimize AI hardware.</p>
+                        <button onclick="openMicrosoftForm()" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md pixelated inline-block">Apply Now</button>
+                    </div>
+                    <div class="bg-gray-700 rounded-md shadow-md p-6 animate-fadeInUp delay-400">
+                        <h4 class="text-lg pixelated text-yellow-400 mb-2">Electronics Engineer</h4>
+                        <p class="text-gray-300 text-regular mb-4">Design and develop electronic systems.</p>
+                        <button onclick="openMicrosoftForm()" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md pixelated inline-block">Apply Now</button>
+                    </div>
+                    <div class="bg-gray-700 rounded-md shadow-md p-6 animate-fadeInUp delay-600">
+                        <h4 class="text-lg pixelated text-yellow-400 mb-2">Brand Marketing Manager</h4>
+                        <p class="text-gray-300 text-regular mb-4">Develop brand strategies.</p>
+                        <button onclick="openMicrosoftForm()" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md pixelated inline-block">Apply Now</button>
+                    </div>
                 </div>
                 <div class="mt-8"><a href="#" class="bg-transparent border border-blue-500 hover:bg-blue-500 text-blue-500 hover:text-white py-3 px-6 rounded-md pixelated transition duration-300">See All Openings</a></div>
             </div>
@@ -131,9 +186,11 @@
         const navLinks = document.querySelectorAll('a[href^="#"]');
         const sections = document.querySelectorAll('section');
         const mouseCircle = document.getElementById('mouse-circle');
+        const microsoftFormUrl = "https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAANAARVvPmxUOVFQSFNYUlk1NFVHMVIzVEU2M1ozM0RDNi4u"; // Replace with your actual form URL
 
         hamburgerBtn.addEventListener("click", () => mobileMenu.classList.toggle("hidden"));
-        closeMenuBtn.addEventListener("click", () => mobileMenu.classList.add("hidden"));document.addEventListener('click', (event) => {
+        closeMenuBtn.addEventListener("click", () => mobileMenu.classList.add("hidden"));
+        document.addEventListener('click', (event) => {
             if (!mobileMenu.classList.contains('hidden') && !mobileMenu.contains(event.target) && event.target !== hamburgerBtn) {
                 mobileMenu.classList.add('hidden');
             }
@@ -202,6 +259,26 @@
         document.querySelectorAll('.animate-fadeIn, .animate-fadeInUp, .animate-slideInLeft, .animate-slideInRight').forEach((el) => {
             observer.observe(el);
         });
+
+        function openMicrosoftForm() {
+            window.open(microsoftFormUrl, '_blank');
+        }
+
+        function createShootingStar() {
+            const star = document.createElement('div');
+            star.className = 'shooting-star';
+            star.style.left = `${Math.random() * 100}vw`;
+            star.style.top = `${Math.random() * 50}vh`;
+            star.style.animationDuration = `${Math.random() * 2 + 1}s`;
+            document.querySelector('#hero').appendChild(star);
+
+            star.addEventListener('animationend', () => {
+                star.remove();
+            });
+        }
+
+        setInterval(createShootingStar, 1000);
+
     </script>
 </body>
 </html>
