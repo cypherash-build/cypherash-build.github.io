@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Pixelify+Sans&family=Roboto:wght@400;500;700&family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Press+Start+2P&family=Roboto:wght@400;500;700&family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -19,7 +19,7 @@
             -moz-osx-font-smoothing: grayscale;
         }
         .pixelated {
-            font-family: 'Pixelify Sans', monospace;
+            font-family: 'Press Start 2P', monospace;
         }
         .container {
             max-width: 1200px;
@@ -27,7 +27,7 @@
             padding: 20px;
         }
         .heading-pixelated {
-            font-family: 'Pixelify Sans', monospace;
+            font-family: 'Press Start 2P', monospace;
             font-size: 2.5rem;
             color: #cbd5e0;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
@@ -39,7 +39,7 @@
             line-height: 1.75;
         }
         .button-pixelated {
-            font-family: 'Pixelify Sans', monospace;
+            font-family: 'Press Start 2P', monospace;
             background-image: linear-gradient(to right, #3b82f6, #8b5cf6);
             color: #fff;
             padding: 14px 28px;
@@ -60,7 +60,7 @@
             transform: translateY(-2px);
         }
         .outline-button-pixelated {
-            font-family: 'Pixelify Sans', monospace;
+            font-family: 'Press Start 2P', monospace;
             border: 2px solid #60a5fa;
             color: #60a5fa;
             padding: 12px 26px;
@@ -127,7 +127,7 @@
                 padding: 12px 16px;
                 border-radius: 6px;
                 transition: background-color 0.2s ease-in-out;
-                font-family: 'Pixelify Sans', monospace;
+                font-family: 'Press Start 2P', monospace;
             }
             .mobile-nav-links a:hover {
                 background-color: #3b82f6;
@@ -176,7 +176,7 @@
             font-size: 1.5rem;
             margin-bottom: 0.5rem;
             color: #818cf8;
-            font-family: 'Pixelify Sans', monospace;
+            font-family: 'Press Start 2P', monospace;
         }
         .team-card p {
             font-size: 0.9rem;
@@ -192,7 +192,7 @@
             font-size: 1.2rem;
             margin-bottom: 0.75rem;
             color: #fbd38d;
-            font-family: 'Pixelify Sans', monospace;
+            font-family: 'Press Start 2P', monospace;
         }
         .opportunity-card p {
             font-size: 0.95rem;
@@ -254,7 +254,7 @@
             font-size: 3.5rem;
             font-weight: bold;
             margin-bottom: 2rem;
-            font-family: 'Pixelify Sans', monospace;
+            font-family: 'Press Start 2P', monospace;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
         }
 
@@ -333,7 +333,7 @@
             border-radius: 8px;
             background-color: rgba(0, 0, 0, 0.5);
             backdrop-filter: blur(5px);
-            font-family: 'Pixelify Sans', monospace;
+            font-family: 'Press Start 2P', monospace;
         }
 
         /* Teams Section */
@@ -384,7 +384,7 @@
             font-size: 1.2rem;
             margin-bottom: 0.75rem;
             color: #fbd38d;
-            font-family: 'Pixelify Sans', monospace;
+            font-family: 'Press Start 2P', monospace;
         }
         .opportunity-card p {
             font-size: 0.95rem;
@@ -437,7 +437,8 @@
             font-size: 1rem;
             padding: 14px 28px;
         }
-*/
+
+        /* Footer */
         .footer {
             padding: 2rem 0;
             text-align: center;
@@ -448,6 +449,57 @@
         }
         .footer a {
             color: #60a5fa;
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 1s ease-out forwards;
+        }
+
+        .slide-in-left {
+            transform: translateX(-50px);
+            opacity: 0;
+            animation: slideInLeft 0.8s ease-out forwards;
+        }
+
+        .slide-in-right {
+            transform: translateX(50px);
+            opacity: 0;
+            animation: slideInRight 0.8s ease-out forwards;
+        }
+
+        .pulse {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInLeft {
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInRight {
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.8;
+            }
         }
     </style>
 </head>
@@ -723,4 +775,3 @@
     </script>
 </body>
 </html>
-        /* Footer
