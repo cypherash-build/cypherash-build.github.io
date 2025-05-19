@@ -11,6 +11,7 @@
     <style>
         body {
             font-family: 'Inter', sans-serif; /* Default font */
+            /* overflow: hidden;  Remove this line */
         }
         .pixelated {
             font-family: 'Press Start 2P', monospace; /* Pixelated font */
@@ -135,6 +136,21 @@
             }
         }
 
+        #mouse-circle {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 150px; /* Increased size for better visibility */
+            height: 150px;
+            border-radius: 50%;
+            background: rgba(120, 190, 255, 0.15); /* Semi-transparent light blue */
+            box-shadow: 0 0 30px 10px rgba(120, 190, 255, 0.25); /* Softer, larger glow */
+            backdrop-filter: blur(15px); /* Slightly stronger blur */
+            pointer-events: none; /* Allows clicks to pass through */
+            z-index: -1; /* Ensure it's *below* all other elements */
+            transform: translate(-50%, -50%); /* Center on the cursor */
+            transition: transform 0.2s ease; /* Slightly smoother transition */
+        }
     </style>
 </head>
 <body class="bg-gradient-to-br from-gray-900 to-gray-800 text-white">
@@ -183,7 +199,7 @@
         <section id="hero" class="py-16 md:py-24 px-4 sm:px-6 lg:px-8">
             <div class="container text-center">
                 <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 mb-4 pixelated">
-                    Welcome to<br>Cypherash Labs
+                    Welcome to Cypherash Labs
                 </h1>
                 <p class="text-lg sm:text-xl text-gray-300 mb-8 text-regular">
                     Where Innovation Meets Impact
@@ -304,6 +320,8 @@
         </div>
     </footer>
 
+    <div id="mouse-circle"></div>
+
     <script>
         const hamburgerBtn = document.getElementById("hamburger-btn");
         const mobileMenu = document.getElementById("mobile-menu");
@@ -311,6 +329,7 @@
         const mobileMenuLinks = mobileMenu.querySelectorAll("a");
         const navLinks = document.querySelectorAll('a[href^="#"]');
         const sections = document.querySelectorAll('section');
+        const mouseCircle = document.getElementById('mouse-circle');
 
         function toggleMobileMenu() {
             mobileMenu.classList.toggle("hidden");
@@ -386,6 +405,12 @@
             document.getElementById('name').value = '';
             document.getElementById('email').value = '';
             document.getElementById('message').value = '';
+        });
+
+        document.addEventListener('mousemove', (event) => {
+            const x = event.clientX;
+            const y = event.clientY;
+            mouseCircle.style.transform = `translate(${x}px, ${y}px)`;
         });
     </script>
 </body>
